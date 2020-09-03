@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "582511727983",
+    "firebase_url": "https://dgsw-msl.firebaseio.com",
+    "project_id": "dgsw-msl",
+    "storage_bucket": "dgsw-msl.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:582511727983:android:cadf23836b0da969ef849a",
+        "android_client_info": {
+          "package_name": "kr.dgsw.android.msl"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "582511727983-ceerkcoggud6lb4vqs601i2vdhr37l47.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNysRWYb6vtH0_FQcjoF57-1SopzoksQQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "582511727983-ceerkcoggud6lb4vqs601i2vdhr37l47.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
