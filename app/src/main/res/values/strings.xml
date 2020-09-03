@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">DGSW MSL</string>
+    <string name="facebook_app_id">604956073521490</string> <string name="fb_login_protocol_scheme">fb604956073521490</string>
 </resources>

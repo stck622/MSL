@@ -62,4 +62,10 @@ dependencies {
     // Firebase Crashlytics SDK.
     implementation 'com.google.firebase:firebase-crashlytics:17.2.1'
 
+    //firebase auth
+    implementation 'com.google.firebase:firebase-auth:19.3.2'
+
+    //facebook sdk
+    implementation 'com.facebook.android:facebook-login:[5,6)'
+
 }
