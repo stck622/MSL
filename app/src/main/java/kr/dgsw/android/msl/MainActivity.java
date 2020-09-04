@@ -2,13 +2,18 @@ package kr.dgsw.android.msl;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.BindingAdapter;
+import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -25,6 +30,8 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import kr.dgsw.android.msl.databinding.ActivityMainBinding;
+
 public class MainActivity extends AppCompatActivity {
 
     CallbackManager callbackManager;
@@ -33,11 +40,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        ActivityMainBinding binding = DataBindingUtil.setContentView(this,R.layout.activity_main);
+        User user = new User("Test1", "User2","https://images.mypetlife.co.kr/content/uploads/2019/09/06150205/cat-baby-4208578_1920.jpg");
+        binding.setUser(user);
+        binding.setImageUrl("https://images.mypetlife.co.kr/content/uploads/2019/09/06150205/cat-baby-4208578_1920.jpg");
+        //setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
         callbackManager = CallbackManager.Factory.create();
 
-        ((LoginButton)findViewById(R.id.login_button)).registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+        ((LoginButton) findViewById(R.id.login_button)).registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 // App code
@@ -89,8 +101,5 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    public void onClick(View view) {
-        throw new RuntimeException("Test Crash"); // Force a crash
-    }
 }
 
