@@ -27,7 +27,7 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -49,7 +49,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    //firebase
+    //firebase analytics
     implementation 'com.google.firebase:firebase-analytics:17.5.0'
 
     //glide
@@ -67,5 +67,8 @@ dependencies {
 
     //facebook sdk
     implementation 'com.facebook.android:facebook-login:[5,6)'
+
+    //multi dex
+    implementation 'com.android.support:multidex:1.0.3'
 
 }
