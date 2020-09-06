@@ -1,5 +1,7 @@
 package kr.dgsw.android.msl;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -43,10 +45,15 @@ public class User {
     @JvmStatic
     @BindingAdapter("setImage")
     public static void setImaged(ImageView view, String profile) {
-        Log.e("log","image loadddddddd");
-        Glide.with(view.getContext())
-                .load(profile).apply(new RequestOptions().circleCrop())
+
+
+        Glide.with(view.getContext().getApplicationContext())
+                .load(R.drawable.loginimage)
+                .apply(new RequestOptions().centerCrop().placeholder(R.drawable.com_facebook_auth_dialog_background).error(R.drawable.com_facebook_auth_dialog_cancel_background))
                 .into(view);
+
+        view.setColorFilter(Color.parseColor("#BDBDBD"), PorterDuff.Mode.MULTIPLY);
+
     }
 
 }

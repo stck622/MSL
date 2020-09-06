@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,6 +31,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.Arrays;
 
 import kr.dgsw.android.msl.databinding.ActivityMainBinding;
 
@@ -45,11 +49,11 @@ public class MainActivity extends AppCompatActivity {
         User user = new User("Test1", "User2","https://images.mypetlife.co.kr/content/uploads/2019/09/06150205/cat-baby-4208578_1920.jpg");
         binding.setUser(user);
         binding.setImageUrl("https://images.mypetlife.co.kr/content/uploads/2019/09/06150205/cat-baby-4208578_1920.jpg");
-        //setContentView(R.layout.activity_main);
+
         mAuth = FirebaseAuth.getInstance();
         callbackManager = CallbackManager.Factory.create();
 
-        ((LoginButton) findViewById(R.id.login_button)).registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+      LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 // App code
@@ -68,6 +72,14 @@ public class MainActivity extends AppCompatActivity {
                 // App code
             }
         });
+
+        ((Button) findViewById(R.id.btn_login)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LoginManager.getInstance().logInWithReadPermissions(MainActivity.this, Arrays.asList("public_profile", "user_friends"));
+            }
+        });
+
 
     }
 
