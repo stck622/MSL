@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.facebook.CallbackManager;
 import com.facebook.login.LoginManager;
@@ -17,7 +16,7 @@ import java.util.Arrays;
 
 import kr.dgsw.android.msl.R;
 import kr.dgsw.android.msl.databinding.ActivityLoginBinding;
-import kr.dgsw.android.msl.Utils.LoginFacebookCallback;
+import kr.dgsw.android.msl.utils.LoginFacebookCallback;
 import kr.dgsw.android.msl.viewmodels.LoginViewModel;
 
 public class LoginView extends AppCompatActivity {
@@ -27,7 +26,6 @@ public class LoginView extends AppCompatActivity {
 
     ActivityLoginBinding binding;
     LoginViewModel viewModel;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

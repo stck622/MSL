@@ -1,4 +1,4 @@
-package kr.dgsw.android.msl.Utils;
+package kr.dgsw.android.msl.utils;
 
 import androidx.annotation.MainThread;
 import androidx.annotation.Nullable;

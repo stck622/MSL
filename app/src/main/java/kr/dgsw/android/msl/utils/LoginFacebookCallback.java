@@ -1,4 +1,4 @@
-package kr.dgsw.android.msl.Utils;
+package kr.dgsw.android.msl.utils;
 
 import android.app.Activity;
 import android.content.Intent;
