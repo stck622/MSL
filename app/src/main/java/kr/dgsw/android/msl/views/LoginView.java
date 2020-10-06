@@ -47,7 +47,7 @@ public class LoginView extends AppCompatActivity {
         viewModel.getLoginBtn().observe(this, new Observer<Void>() {
             @Override
             public void onChanged(Void aVoid) {
-                LoginManager.getInstance().logInWithReadPermissions(LoginView.this, Arrays.asList("public_profile", "user_friends"));
+                LoginManager.getInstance().logInWithReadPermissions(LoginView.this, Arrays.asList("public_profile"));
             }
         });
 

@@ -31,7 +31,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="김원빈님 안녕하세요"
+                android:text="@{MainViewModel.title}"
                 android:textColor="#000000"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -70,7 +70,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycle"
-            item="@{MainViewModel.items}"
+            storeListItem="@{MainViewModel.items}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="5dp"

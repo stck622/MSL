@@ -1,7 +1,11 @@
 package kr.dgsw.android.msl.utils;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableArrayList;
@@ -11,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.dgsw.android.msl.databinding.StoreListItemBinding;
+import kr.dgsw.android.msl.views.MainView;
+import kr.dgsw.android.msl.views.StoreInfoView;
 
 public class StoreListAdapter extends RecyclerView.Adapter<StoreListHolder> {
 
@@ -32,6 +38,15 @@ public class StoreListAdapter extends RecyclerView.Adapter<StoreListHolder> {
     public void onBindViewHolder(@NonNull StoreListHolder holder, int position) {
         StoreListItem item = items.get(position);
         holder.bind(item);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = v.getContext();
+                Intent intent = new Intent(context, StoreInfoView.class);
+                intent.putExtra("item",item);
+                context.startActivity(intent);
+            }
+        });
     }
 
     void setItem(ObservableArrayList<StoreListItem> items) {

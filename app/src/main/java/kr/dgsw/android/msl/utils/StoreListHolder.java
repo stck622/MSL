@@ -20,4 +20,5 @@ public class StoreListHolder extends RecyclerView.ViewHolder {
     public void bind(StoreListItem item) {
         binding.setItemViewModel(item);
     }
+
 }

@@ -1,29 +1,70 @@
 package kr.dgsw.android.msl.utils;
 
-public class StoreListItem {
+import java.io.Serializable;
 
-    private String title;
-    private String context;
+public class StoreListItem implements Serializable {
 
-    public StoreListItem(String title, String context) {
-        this.title = title;
-        this.context = context;
+    private String address;
+    private String name;
+    private String placeId;
+    private String reson;
+    private Long starCounter;
+    private Long starTotal;
+    private String thumbnail;
+
+    public String getAddress() {
+        return address;
     }
 
-    public String getTitle() {
-        return title;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getName() {
+        return name;
     }
 
-    public String getContext() {
-        return context;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setContext(String context) {
-        this.context = context;
+    public String getPlaceId() {
+        return placeId;
     }
 
+    public void setPlaceId(String placeId) {
+        this.placeId = placeId;
+    }
+
+    public String getReson() {
+        return reson;
+    }
+
+    public void setReson(String reson) {
+        this.reson = reson;
+    }
+
+    public Long getStarCounter() {
+        return starCounter;
+    }
+
+    public void setStarCounter(Long starCounter) {
+        this.starCounter = starCounter;
+    }
+
+    public Long getStarTotal() {
+        return starTotal;
+    }
+
+    public void setStarTotal(Long starTotal) {
+        this.starTotal = starTotal;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
 }
