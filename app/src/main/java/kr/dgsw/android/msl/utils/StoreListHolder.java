@@ -1,23 +1,20 @@
 package kr.dgsw.android.msl.utils;
 
-import android.view.View;
-
-import androidx.annotation.NonNull;
-import androidx.databinding.library.baseAdapters.BR;
 import androidx.recyclerview.widget.RecyclerView;
 
-import kr.dgsw.android.msl.databinding.StoreListItemBinding;
+import kr.dgsw.android.msl.databinding.StoreItemBinding;
+
 
 public class StoreListHolder extends RecyclerView.ViewHolder {
 
-    StoreListItemBinding binding;
+    StoreItemBinding binding;
 
-    StoreListHolder(StoreListItemBinding binding) {
+    StoreListHolder(StoreItemBinding binding) {
         super(binding.getRoot());
         this.binding = binding;
     }
 
-    public void bind(StoreListItem item) {
+    public void bind(Store item) {
         binding.setItemViewModel(item);
     }
 

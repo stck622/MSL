@@ -8,7 +8,7 @@
 
         <variable
             name="ItemViewModel"
-            type="kr.dgsw.android.msl.utils.StoreListItem" />
+            type="kr.dgsw.android.msl.utils.Store" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -59,7 +59,8 @@
                     android:textSize="17sp" />
 
                 <TextView
-                    setStar="@{ItemViewModel}"
+                    star_count="@{ItemViewModel.starCounter}"
+                    star_total="@{ItemViewModel.starTotal}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"

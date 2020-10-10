@@ -2,7 +2,7 @@ package kr.dgsw.android.msl.utils;
 
 import java.io.Serializable;
 
-public class StoreListItem implements Serializable {
+public class Store implements Serializable {
 
     private String address;
     private String name;

@@ -1,32 +1,35 @@
 package kr.dgsw.android.msl.utils;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.Profile;
-import com.facebook.login.LoginResult;
+import com.facebook.LoginStatusCallback;
 
-import kr.dgsw.android.msl.views.MainView;
+import com.google.firebase.auth.FirebaseAuth;
 
-public class LoginFacebookCallback implements FacebookCallback {
+
+public class LoginFacebookCallback implements FacebookCallback, LoginStatusCallback {
 
     Activity activity;
+    private FirebaseAuth mAuth;
+
+    public void changePage(String toast){
+        Toast.makeText(activity, toast, Toast.LENGTH_SHORT).show();
+        FacebookUtil.handleFacebookAccessToken(activity, AccessToken.getCurrentAccessToken());
+    }
 
     public LoginFacebookCallback(Activity activity){
         this.activity = activity;
+        mAuth = FirebaseAuth.getInstance();
     }
 
     @Override
     public void onSuccess(Object o) {
-        profile.id = Profile.getCurrentProfile().getId();
-        profile.name = Profile.getCurrentProfile().getName();
-        Intent intent = new Intent(activity, MainView.class);
-        activity.startActivity(intent);
-        Toast.makeText(activity, "성공", Toast.LENGTH_SHORT).show();
+        changePage("로그인 성공");
     }
 
     @Override
@@ -37,5 +40,22 @@ public class LoginFacebookCallback implements FacebookCallback {
     @Override
     public void onError(FacebookException error) {
         Toast.makeText(activity, "에러", Toast.LENGTH_SHORT).show();
+        Log.e("e",error.toString());
+    }
+
+    @Override
+    public void onCompleted(AccessToken accessToken) {
+        changePage("자동로그인 성공");
+    }
+
+    @Override
+    public void onFailure() {
+        Toast.makeText(activity, "자동로그인 실패", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onError(Exception exception) {
+        Toast.makeText(activity, "자동로그인 에러", Toast.LENGTH_SHORT).show();
+        Log.e("e",exception.toString());
     }
 }

@@ -4,17 +4,18 @@ import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ObservableField;
 import androidx.lifecycle.ViewModel;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import kr.dgsw.android.msl.utils.FirestoreData;
-import kr.dgsw.android.msl.utils.StoreListItem;
-import kr.dgsw.android.msl.utils.profile;
+import kr.dgsw.android.msl.utils.Store;
 
 
 public class MainViewModel extends ViewModel {
 
-    ObservableArrayList<StoreListItem> items;
+    ObservableArrayList<Store> items;
     ObservableField<String> title = null;
 
-    public ObservableArrayList<StoreListItem> getItems() {
+    public ObservableArrayList<Store> getItems() {
         if (items == null) {
             items = new ObservableArrayList<>();
         }
@@ -28,13 +29,13 @@ public class MainViewModel extends ViewModel {
         return title;
     }
 
-    public void setItems(ObservableArrayList<StoreListItem> items) {
+    public void setItems(ObservableArrayList<Store> items) {
         this.items = items;
     }
 
     public MainViewModel() {
         FirestoreData.getStoreList(getItems());
-        getTitle().set(profile.name+"님 반갑습니다");
+        getTitle().set(FirebaseAuth.getInstance().getCurrentUser().getDisplayName()+"님 반갑습니다");
     }
 
 }

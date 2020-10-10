@@ -11,9 +11,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 
-import java.util.List;
-
-import kotlin.jvm.JvmStatic;
 import kr.dgsw.android.msl.R;
 
 public class AdapterBindings {
@@ -27,21 +24,38 @@ public class AdapterBindings {
     }
 
     @BindingAdapter("storeListItem")
-    public static void storeListItem(RecyclerView recyclerView, ObservableArrayList<StoreListItem> item) {
+    public static void storeListItem(RecyclerView recyclerView, ObservableArrayList<Store> item) {
         StoreListAdapter adapter = (StoreListAdapter) recyclerView.getAdapter();
         if (adapter != null) {
             adapter.setItem(item);
         }
     }
 
-    @BindingAdapter("setStar")
-    public static void setStar(TextView textView, StoreListItem item) {
-        if(item.getStarCounter() != 0) {
-            long result = item.getStarTotal() / item.getStarCounter();
+    @BindingAdapter("reviewListItem")
+    public static void reviewListItem(RecyclerView recyclerView, ObservableArrayList<Review> item) {
+        ReviewListAdapter adapter = (ReviewListAdapter) recyclerView.getAdapter();
+        if (adapter != null) {
+            adapter.setItem(item);
+        }
+    }
+
+    @BindingAdapter({"star_count", "star_total"})
+    public static void setStar(TextView textView, Long count, Long total) {
+        if (count != 0) {
+            long result = total / count;
             textView.setText(String.valueOf(result));
         } else {
             textView.setText(String.valueOf(0));
         }
+    }
+
+    @BindingAdapter("setStarImg")
+    public static void setStarImg(TextView textView, Long star) {
+        String text = "";
+        for(int i = 0; i < star; i++)
+            text += "★";
+        textView.setText(text);
+
     }
 
     @BindingAdapter("setThumbnail")

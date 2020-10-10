@@ -5,38 +5,33 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableArrayList;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import kr.dgsw.android.msl.databinding.StoreListItemBinding;
-import kr.dgsw.android.msl.views.MainView;
+import kr.dgsw.android.msl.databinding.StoreItemBinding;
 import kr.dgsw.android.msl.views.StoreInfoView;
 
 public class StoreListAdapter extends RecyclerView.Adapter<StoreListHolder> {
 
-    ObservableArrayList<StoreListItem> items;
+    ObservableArrayList<Store> items;
 
-    public StoreListAdapter(ObservableArrayList<StoreListItem> items) {
+    public StoreListAdapter(ObservableArrayList<Store> items) {
         this.items = items;
     }
 
     @NonNull
     @Override
     public StoreListHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        StoreListItemBinding binding = StoreListItemBinding.
+        StoreItemBinding binding = StoreItemBinding.
                 inflate(LayoutInflater.from(parent.getContext()), parent, false);
         return new StoreListHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull StoreListHolder holder, int position) {
-        StoreListItem item = items.get(position);
+        Store item = items.get(position);
         holder.bind(item);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,7 +44,7 @@ public class StoreListAdapter extends RecyclerView.Adapter<StoreListHolder> {
         });
     }
 
-    void setItem(ObservableArrayList<StoreListItem> items) {
+    void setItem(ObservableArrayList<Store> items) {
         if (items == null) {
             return;
         }
